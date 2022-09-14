@@ -13,7 +13,7 @@ class MainActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.searchByTopic("a")
+        viewModel.searchByTopic("bring+me+the+horizon")
 
         setContent {
 
