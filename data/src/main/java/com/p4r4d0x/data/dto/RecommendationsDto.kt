@@ -1,4 +1,4 @@
-package com.p4r4d0x.data.api
+package com.p4r4d0x.data.dto
 
 import com.google.gson.annotations.SerializedName
 

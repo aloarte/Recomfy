@@ -1,6 +1,8 @@
 package com.p4r4d0x.recomfy.di
 
+import com.p4r4d0x.data.repositories.BandDataRepositoryImpl
 import com.p4r4d0x.data.repositories.SearchRepositoryImpl
+import com.p4r4d0x.domain.repository.BandDataRepository
 import com.p4r4d0x.domain.repository.SearchRepository
 import dagger.Binds
 import dagger.Module
@@ -12,4 +14,7 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class RepositoryModule {
     @Binds
     abstract fun bindSearchRepository(impl: SearchRepositoryImpl): SearchRepository
+
+    @Binds
+    abstract fun bindBandDataRepository(impl: BandDataRepositoryImpl): BandDataRepository
 }
