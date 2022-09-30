@@ -19,14 +19,18 @@ class MainViewModel @Inject constructor(
     ViewModel() {
 
     val recommendations: MutableState<RecommendationsBo?> = mutableStateOf(null)
+
+    val loading: MutableState<Boolean> = mutableStateOf(false)
+
     val bandData: MutableState<BandDataBo?> = mutableStateOf(null)
 
-
     fun searchByTopic(queryTopic: String) {
+        loading.value = true
         recommendationsUseCase.invoke(
             viewModelScope,
             params = GetRecommendationsUseCase.Params(queryTopic)
         ) {
+            loading.value = false
             recommendations.value = it
         }
     }
@@ -43,7 +47,6 @@ class MainViewModel @Inject constructor(
             bandData.value = it
         }
     }
-
 
 
 }
