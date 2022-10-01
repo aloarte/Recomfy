@@ -1,6 +1,5 @@
 package com.p4r4d0x.recomfy.search
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.*
@@ -18,7 +17,6 @@ import com.p4r4d0x.recomfy.main.MainViewModel
 import com.p4r4d0x.recomfy.main.compose.RecomfyDivider
 import com.p4r4d0x.recomfy.main.compose.RecomfySurface
 import com.p4r4d0x.recomfy.theme.RecomfyTheme
-
 
 @Composable
 fun SearchScreen(
@@ -42,7 +40,6 @@ fun SearchScreen(
         Button(
             enabled = true, onClick = {
                 state.searching = true
-                Log.d("ALRALR", "onSearchQuery ${state.query.text}")
                 viewModel.searchByTopic(state.query.text)
             }) {
             Text(text = "Search"/*stringResource(R.string.btn_notification_clear)*/)
@@ -55,8 +52,7 @@ fun SearchScreen(
 
         when (state.searchDisplay) {
             SearchDisplay.Input -> SearchSuggestions(
-//                suggestions = state.suggestions,
-//                onSuggestionSelect = { suggestion -> state.query = TextFieldValue(suggestion) }
+
             )
             SearchDisplay.Results -> SearchResults(
 

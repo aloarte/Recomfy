@@ -1,5 +1,6 @@
 package com.p4r4d0x.recomfy.main
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,8 @@ class MainViewModel @Inject constructor(
 
     val bandData: MutableState<BandDataBo?> = mutableStateOf(null)
 
+    val errorReceived: MutableState<Boolean> = mutableStateOf(false)
+
     fun searchByTopic(queryTopic: String) {
         loading.value = true
         recommendationsUseCase.invoke(
@@ -35,16 +38,17 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun startDetail(bandName:String){
-        fetchArtistData(bandName)
-    }
-
-    fun fetchArtistData(bandName:String){
+    fun fetchArtistData(bandName: String) {
         bandDataUseCase.invoke(
             viewModelScope,
             params = GetBandDataUseCase.Params(bandName)
         ) {
-            bandData.value = it
+            Log.d("ALRALR", ">>>>>fetchArtistData got data $bandName,  ${bandData.value}")
+            if (it == null) {
+                errorReceived.value = true
+            } else {
+                bandData.value = it
+            }
         }
     }
 

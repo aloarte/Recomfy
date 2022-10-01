@@ -1,9 +1,13 @@
 package com.p4r4d0x.recomfy.main
 
+import android.util.Log
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.p4r4d0x.recomfy.main.compose.DetailScreen
 import com.p4r4d0x.recomfy.search.SearchScreen
 import com.p4r4d0x.recomfy.theme.RecomfyTheme
 
@@ -13,11 +17,26 @@ fun RecomfyApp(viewModel: MainViewModel) {
     RecomfyTheme {
         NavHost(
             navController = navController,
-            startDestination = Screen.Search.route
+            startDestination = NavDestinations.Search.route
         ) {
-            composable(Screen.Search.route) { from ->
-                SearchScreen(viewModel, onOpenDetail = {})
+            composable(route = NavDestinations.Search.route) { from ->
+                SearchScreen(viewModel, onOpenDetail = {
+                    navController.navigate("${NavDestinations.Detail}/${it.name}")
+                })
             }
+            composable(
+                route = "${NavDestinations.Detail}/{${NavDestinations.ITEM_NAME_KEY}}",
+                arguments = listOf(navArgument(NavDestinations.ITEM_NAME_KEY) { type = NavType.StringType })
+            ) { backStackEntry ->
+                val arguments = requireNotNull(backStackEntry.arguments)
+                val itemDataName = arguments.getString(NavDestinations.ITEM_NAME_KEY)
+                Log.d("ALRALR",">>navigated to detail $itemDataName")
+                itemDataName?.let{
+                    DetailScreen(viewModel, itemDataName) { navController.navigateUp() }
+
+                }
+            }
+
         }
     }
 
