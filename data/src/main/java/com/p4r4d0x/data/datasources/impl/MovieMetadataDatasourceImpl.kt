@@ -10,11 +10,11 @@ import javax.inject.Inject
 
 class MovieMetadataDatasourceImpl @Inject constructor(private val metadataApi: OmdbApi) :
     MovieMetadataDatasource {
+
     override suspend fun queryMovieMetadata(
         movieTitle: String
     ): BackendResult<MovieBo> {
         return try {
-
             val response = metadataApi.getMovieMetadata(movieTitle).awaitResponse()
             if (response.isSuccessful) {
                 parseMovieMetadata(response.body())?.let {

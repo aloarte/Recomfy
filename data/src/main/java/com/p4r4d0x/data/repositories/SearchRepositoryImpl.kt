@@ -12,7 +12,7 @@ class SearchRepositoryImpl @Inject constructor(private val datasource: SearchDat
 
     override suspend fun getRecommendations(queryTopics: String): RecommendationsBo? {
 
-        return when(val recommendations = datasource.queryRecommendations(queryTopics, type =  RecommendationResultType.game)){
+        return when(val recommendations = datasource.queryRecommendations(queryTopics, limit= 8)){
             is BackendResult.Error -> {
                 null
             }

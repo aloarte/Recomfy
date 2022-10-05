@@ -19,7 +19,7 @@ class GetRecommendationsUseCase @Inject constructor(
     class Params(val queryTopics: String)
 
     override suspend fun run(params: Params): RecommendationsBo? {
-        return searchRepository.getRecommendations(params.queryTopics)?.let { recommendations ->
+        return searchRepository.getRecommendations(params.queryTopics, )?.let { recommendations ->
             recommendations.similar = recommendations.similar.map { getMetadata(it) }
             recommendations.info = recommendations.info.map { getMetadata(it) }
             recommendations

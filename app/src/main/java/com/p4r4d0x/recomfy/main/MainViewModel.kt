@@ -1,6 +1,5 @@
 package com.p4r4d0x.recomfy.main
 
-import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -43,7 +42,6 @@ class MainViewModel @Inject constructor(
             viewModelScope,
             params = GetBandDataUseCase.Params(bandName)
         ) {
-            Log.d("ALRALR", ">>>>>fetchArtistData got data $bandName,  ${bandData.value}")
             if (it == null) {
                 errorReceived.value = true
             } else {

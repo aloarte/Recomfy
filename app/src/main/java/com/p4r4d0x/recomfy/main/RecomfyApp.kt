@@ -30,7 +30,6 @@ fun RecomfyApp(viewModel: MainViewModel) {
             ) { backStackEntry ->
                 val arguments = requireNotNull(backStackEntry.arguments)
                 val itemDataName = arguments.getString(NavDestinations.ITEM_NAME_KEY)
-                Log.d("ALRALR",">>navigated to detail $itemDataName")
                 itemDataName?.let{
                     DetailScreen(viewModel, itemDataName) { navController.navigateUp() }
 
