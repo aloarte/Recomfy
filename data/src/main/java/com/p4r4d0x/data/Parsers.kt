@@ -15,7 +15,7 @@ object Parsers {
             info = dto.similar.info.map {
                 ItemDataBo(
                     name = it.name,
-                    type = RecommendationType.valueOf(it.type),
+                    type = RecommendationType.find(it.type),
                     wTeaser = it.wTeaser,
                     yId = it.yId,
                     wUrl = it.wUrl,
@@ -25,7 +25,7 @@ object Parsers {
             similar = dto.similar.result.map {
                 ItemDataBo(
                     name = it.name,
-                    type = RecommendationType.valueOf(it.type),
+                    type = RecommendationType.find(it.type),
                     wTeaser = it.wTeaser,
                     yId = it.yId,
                     wUrl = it.wUrl,
