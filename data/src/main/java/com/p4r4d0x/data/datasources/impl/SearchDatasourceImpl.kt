@@ -2,14 +2,14 @@ package com.p4r4d0x.data.datasources.impl
 
 import com.p4r4d0x.data.BackendResult
 import com.p4r4d0x.data.Parsers.parseRecommendations
-import com.p4r4d0x.data.api.RecommendationResultType
-import com.p4r4d0x.data.api.RecommendationsApi
+import com.p4r4d0x.data.enums.RecommendationResultType
+import com.p4r4d0x.data.api.TasteDiveApi
 import com.p4r4d0x.data.datasources.SearchDatasource
 import com.p4r4d0x.domain.models.RecommendationsBo
 import retrofit2.awaitResponse
 import javax.inject.Inject
 
-class SearchDatasourceImpl @Inject constructor(private val searchApi: RecommendationsApi) :
+class SearchDatasourceImpl @Inject constructor(private val searchApi: TasteDiveApi) :
     SearchDatasource {
     override suspend fun queryRecommendations(
         queryTopic: String,

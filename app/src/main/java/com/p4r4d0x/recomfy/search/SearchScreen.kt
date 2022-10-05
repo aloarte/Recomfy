@@ -8,12 +8,14 @@ import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.p4r4d0x.domain.models.ItemDataBo
 import com.p4r4d0x.recomfy.main.MainViewModel
+import com.p4r4d0x.recomfy.main.compose.RecomfyButton
 import com.p4r4d0x.recomfy.main.compose.RecomfyDivider
 import com.p4r4d0x.recomfy.main.compose.RecomfySurface
 import com.p4r4d0x.recomfy.theme.RecomfyTheme
@@ -37,12 +39,9 @@ fun SearchScreen(
             inputFulfilled = state.inputFulfilled
         )
 
-        Button(
-            enabled = true, onClick = {
-                state.searching = true
-                viewModel.searchByTopic(state.query.text)
-            }) {
-            Text(text = "Search"/*stringResource(R.string.btn_notification_clear)*/)
+        RecomfyButton(modifier = Modifier.align(CenterHorizontally).width(150.dp),buttonText = "Buscar", enabled = state.query.text.isNotEmpty()) {
+            state.searching = true
+            viewModel.searchByTopic(state.query.text)
         }
 
         RecomfyDivider()

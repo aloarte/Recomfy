@@ -1,8 +1,10 @@
 package com.p4r4d0x.recomfy.di
 
-import com.p4r4d0x.data.repositories.BandDataRepositoryImpl
+import com.p4r4d0x.data.repositories.BandMetadataRepositoryImpl
+import com.p4r4d0x.data.repositories.MovieMetadataRepositoryImpl
 import com.p4r4d0x.data.repositories.SearchRepositoryImpl
-import com.p4r4d0x.domain.repository.BandDataRepository
+import com.p4r4d0x.domain.repository.BandMetadataRepository
+import com.p4r4d0x.domain.repository.MovieMetadataRepository
 import com.p4r4d0x.domain.repository.SearchRepository
 import dagger.Binds
 import dagger.Module
@@ -16,5 +18,8 @@ abstract class RepositoryModule {
     abstract fun bindSearchRepository(impl: SearchRepositoryImpl): SearchRepository
 
     @Binds
-    abstract fun bindBandDataRepository(impl: BandDataRepositoryImpl): BandDataRepository
+    abstract fun bindBandMetadataRepository(impl: BandMetadataRepositoryImpl): BandMetadataRepository
+
+    @Binds
+    abstract fun bindMovieMetadataRepository(impl: MovieMetadataRepositoryImpl): MovieMetadataRepository
 }

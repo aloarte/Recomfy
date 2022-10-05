@@ -1,7 +1,8 @@
 package com.p4r4d0x.recomfy.di
 
-import com.p4r4d0x.data.api.BandDataApi
-import com.p4r4d0x.data.api.RecommendationsApi
+import com.p4r4d0x.data.api.TheAudioDbApi
+import com.p4r4d0x.data.api.OmdbApi
+import com.p4r4d0x.data.api.TasteDiveApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +34,19 @@ object NetworkModule {
     @Named("TheAudioDb")
     fun provideRetrofitTheAudioDb(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(" https://www.theaudiodb.com")
+            .baseUrl("https://www.theaudiodb.com")
+            .client(getRetrofitClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+
+    @Singleton
+    @Provides
+    @Named("OMDB")
+    fun provideRetrofitOMDB(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(" https://www.omdbapi.com")
             .client(getRetrofitClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -47,14 +60,19 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRecommendationsApiClient(@Named("TasteDive") retrofit: Retrofit): RecommendationsApi {
-        return retrofit.create(RecommendationsApi::class.java)
+    fun provideRecommendationsApiClient(@Named("TasteDive") retrofit: Retrofit): TasteDiveApi {
+        return retrofit.create(TasteDiveApi::class.java)
     }
 
     @Singleton
     @Provides
-    fun provideBandDataApiClient(@Named("TheAudioDb") retrofit: Retrofit): BandDataApi {
-        return retrofit.create(BandDataApi::class.java)
+    fun provideBandMetadataApiClient(@Named("TheAudioDb") retrofit: Retrofit): TheAudioDbApi {
+        return retrofit.create(TheAudioDbApi::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideMovieMetadataApiClient(@Named("OMDB") retrofit: Retrofit): OmdbApi {
+        return retrofit.create(OmdbApi::class.java)
+    }
 }

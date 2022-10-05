@@ -1,6 +1,6 @@
 package com.p4r4d0x.domain.models
 
-data class BandDataBo(
+data class BandBo(
     val artistName: String="",
     val formedYear: Int=0,
     val disbandedYear: Int=0,

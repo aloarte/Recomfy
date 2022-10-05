@@ -5,7 +5,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.p4r4d0x.domain.models.BandDataBo
+import com.p4r4d0x.domain.models.BandBo
 import com.p4r4d0x.domain.models.RecommendationsBo
 import com.p4r4d0x.domain.usecase.GetBandDataUseCase
 import com.p4r4d0x.domain.usecase.GetRecommendationsUseCase
@@ -23,7 +23,7 @@ class MainViewModel @Inject constructor(
 
     val loading: MutableState<Boolean> = mutableStateOf(false)
 
-    val bandData: MutableState<BandDataBo?> = mutableStateOf(null)
+    val bandData: MutableState<BandBo?> = mutableStateOf(null)
 
     val errorReceived: MutableState<Boolean> = mutableStateOf(false)
 

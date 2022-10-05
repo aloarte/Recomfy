@@ -1,14 +1,10 @@
 package com.p4r4d0x.recomfy.main.compose
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -25,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.p4r4d0x.recomfy.main.MainViewModel
 import com.p4r4d0x.recomfy.theme.RecomfyTheme
-
 
 @Composable
 fun RecomfySurface(
@@ -69,6 +64,27 @@ fun RecomfyDivider(
 }
 
 @Composable
+fun RecomfyButton(modifier: Modifier,buttonText: String, enabled:Boolean=true, buttonAction: () -> Unit) {
+    RecomfyTheme {
+        Button(
+            modifier = modifier,
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = RecomfyTheme.colors.uiBackground,
+                contentColor = RecomfyTheme.colors.textPrimary,
+                disabledBackgroundColor = RecomfyTheme.colors.textSecondary,
+                disabledContentColor = RecomfyTheme.colors.textSecondary
+            ),
+            enabled = enabled,
+            onClick = buttonAction
+        ) {
+            Text(text = buttonText, color = RecomfyTheme.colors.textPrimary)
+        }
+    }
+
+}
+
+
+@Composable
 fun DetailScreen(viewModel: MainViewModel, itemDataName: String, onNavigateUp: () -> Unit) {
     val bandDetail = viewModel.bandData.value
     val errorReceived = viewModel.errorReceived.value
@@ -76,7 +92,7 @@ fun DetailScreen(viewModel: MainViewModel, itemDataName: String, onNavigateUp: (
         viewModel.fetchArtistData(itemDataName)
     }
 
-    if(errorReceived){
+    if (errorReceived) {
         Text(
             "Error",
             fontSize = 20.sp,
@@ -85,7 +101,7 @@ fun DetailScreen(viewModel: MainViewModel, itemDataName: String, onNavigateUp: (
             modifier = Modifier
                 .padding(vertical = 15.dp, horizontal = 10.dp)
         )
-    }else{
+    } else {
         bandDetail?.let {
             Column(
                 modifier = Modifier

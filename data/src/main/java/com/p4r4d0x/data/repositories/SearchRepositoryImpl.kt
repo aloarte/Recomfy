@@ -1,7 +1,7 @@
 package com.p4r4d0x.data.repositories
 
 import com.p4r4d0x.data.BackendResult
-import com.p4r4d0x.data.api.RecommendationResultType
+import com.p4r4d0x.data.enums.RecommendationResultType
 import com.p4r4d0x.data.datasources.SearchDatasource
 import com.p4r4d0x.domain.models.RecommendationsBo
 import com.p4r4d0x.domain.repository.SearchRepository

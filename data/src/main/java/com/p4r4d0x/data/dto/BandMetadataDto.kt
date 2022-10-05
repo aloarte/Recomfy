@@ -1,6 +1,6 @@
 package com.p4r4d0x.data.dto
 
-data class BandDataDto(
+data class BandMetadataDto(
     val artists: List<ArtistData>
 )
 

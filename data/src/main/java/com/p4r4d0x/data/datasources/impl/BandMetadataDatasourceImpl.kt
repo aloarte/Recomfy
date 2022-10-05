@@ -2,17 +2,17 @@ package com.p4r4d0x.data.datasources.impl
 
 import com.p4r4d0x.data.BackendResult
 import com.p4r4d0x.data.Parsers.parseBandData
-import com.p4r4d0x.data.api.BandDataApi
-import com.p4r4d0x.data.datasources.BandDataDatasource
-import com.p4r4d0x.domain.models.BandDataBo
+import com.p4r4d0x.data.api.TheAudioDbApi
+import com.p4r4d0x.data.datasources.BandMetadataDatasource
+import com.p4r4d0x.domain.models.BandBo
 import retrofit2.awaitResponse
 import javax.inject.Inject
 
-class BandDataDatasourceImpl @Inject constructor(private val bandDataApi: BandDataApi) :
-    BandDataDatasource {
-    override suspend fun queryBandData(
+class BandMetadataDatasourceImpl @Inject constructor(private val bandDataApi: TheAudioDbApi) :
+    BandMetadataDatasource {
+    override suspend fun queryBandMetadata(
         bandName: String
-    ): BackendResult<BandDataBo> {
+    ): BackendResult<BandBo> {
         return try {
             val response = bandDataApi.getBandData(bandName).awaitResponse()
             if (response.isSuccessful) {

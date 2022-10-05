@@ -1,8 +1,10 @@
 package com.p4r4d0x.recomfy.di
 
-import com.p4r4d0x.data.datasources.BandDataDatasource
+import com.p4r4d0x.data.datasources.BandMetadataDatasource
+import com.p4r4d0x.data.datasources.MovieMetadataDatasource
 import com.p4r4d0x.data.datasources.SearchDatasource
-import com.p4r4d0x.data.datasources.impl.BandDataDatasourceImpl
+import com.p4r4d0x.data.datasources.impl.BandMetadataDatasourceImpl
+import com.p4r4d0x.data.datasources.impl.MovieMetadataDatasourceImpl
 import com.p4r4d0x.data.datasources.impl.SearchDatasourceImpl
 import dagger.Binds
 import dagger.Module
@@ -16,6 +18,10 @@ abstract class DataSourceModule {
     abstract fun bindSearchDatasource(impl: SearchDatasourceImpl): SearchDatasource
 
     @Binds
-    abstract fun bindBandDataDatasource(impl: BandDataDatasourceImpl): BandDataDatasource
+    abstract fun bindBandMetadataDatasource(impl: BandMetadataDatasourceImpl): BandMetadataDatasource
+
+    @Binds
+    abstract fun bindMovieMetadataDatasource(impl: MovieMetadataDatasourceImpl): MovieMetadataDatasource
+
 
 }

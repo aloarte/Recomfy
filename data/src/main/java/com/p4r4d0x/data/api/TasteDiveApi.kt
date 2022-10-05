@@ -1,11 +1,12 @@
 package com.p4r4d0x.data.api
 
 import com.p4r4d0x.data.dto.RecommendationsDto
+import com.p4r4d0x.data.enums.RecommendationResultType
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RecommendationsApi {
+interface TasteDiveApi {
 
     @GET("api/similar")
     fun listRecommendations(
