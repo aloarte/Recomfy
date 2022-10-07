@@ -12,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -23,6 +24,8 @@ import com.p4r4d0x.domain.models.ItemDataBo
 import com.p4r4d0x.domain.models.RecommendationsBo
 import com.p4r4d0x.recomfy.main.compose.RecomfySurface
 import com.p4r4d0x.recomfy.theme.RecomfyTheme
+import com.skydoves.landscapist.ImageOptions
+import com.skydoves.landscapist.glide.GlideImage
 
 @Preview(showBackground = true)
 @Composable
@@ -35,6 +38,7 @@ private fun SearchResultsPreview() {
                         name = "Pulp fiction",
                         genre = "Action",
                         type = RecommendationType.movie,
+                        bannerImage = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
                         wUrl = "",
                         yUrl = "",
                         yId = "",
@@ -53,6 +57,7 @@ private fun SearchResultsPreview() {
                     ItemDataBo(
                         name = "Reservoir Dogs",
                         genre = "Action",
+                        bannerImage = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
                         type = RecommendationType.movie,
                         wUrl = "",
                         yUrl = "",
@@ -114,12 +119,17 @@ fun ItemCard(
                     Modifier
                         .fillMaxWidth(),
                 ) {
-//                    Image(
-//                        painterResource(R.drawable.empty_state_search),
-//                        contentDescription = null
-//                    )
-                    Text(
+
+                    GlideImage(
                         modifier = Modifier.align(Alignment.CenterStart),
+                        imageModel = itemDataBo.bannerImage,
+                        imageOptions = ImageOptions(
+                            contentScale = ContentScale.Crop,
+                            alignment = Alignment.Center
+                        )
+                    )
+                    Text(
+                        modifier = Modifier.align(Alignment.Center),
                         textAlign = TextAlign.Left,
                         text = itemDataBo.name,
                         fontSize = 12.sp,

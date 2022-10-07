@@ -1,6 +1,5 @@
 package com.p4r4d0x.recomfy.main
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
