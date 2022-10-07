@@ -103,6 +103,7 @@ fun ItemCard(
 ) {
     RecomfySurface {
         Card(
+            modifier = Modifier.height(50.dp).fillMaxWidth(),
             contentColor = RecomfyTheme.colors.textSecondary,
             backgroundColor = RecomfyTheme.colors.uiBackground,
             shape = RoundedCornerShape(15.dp),
@@ -121,7 +122,7 @@ fun ItemCard(
                 ) {
 
                     GlideImage(
-                        modifier = Modifier.align(Alignment.CenterStart),
+                        modifier = Modifier.align(Alignment.CenterStart).width(28.dp).height(50.dp),
                         imageModel = itemDataBo.bannerImage,
                         imageOptions = ImageOptions(
                             contentScale = ContentScale.Crop,

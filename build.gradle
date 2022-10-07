@@ -5,8 +5,8 @@ ext {
     roomVersion = "2.4.3"
     composeViewModelVersion = "2.5.1"
     composeVersion = "1.2.1"
-    activityComposeVersion = "1.4.0" //May cause gradle conflicts
-    composeNavigationVersion = '2.5.0-alpha01'
+    activityComposeVersion = "1.6.0" //May cause gradle conflicts
+    composeNavigationVersion = '2.6.0-alpha02'
     composeThemeVersion = "1.1.20" //May cause gradle conflicts
     materialVersion = '1.6.1'
     appCompatVersion = "1.4.1" //May cause gradle conflicts
