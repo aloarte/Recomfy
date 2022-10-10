@@ -1,21 +1,21 @@
 
 ext {
 
-    coroutinesVersion = '1.6.4'
-    roomVersion = "2.4.3"
+    activityComposeVersion = "1.6.0" //May cause gradle conflicts
+    appCompatVersion = "1.4.1" //May cause gradle conflicts
+    composeNavigationVersion = '2.6.0-alpha02'
     composeViewModelVersion = "2.5.1"
     composeVersion = "1.2.1"
-    activityComposeVersion = "1.6.0" //May cause gradle conflicts
-    composeNavigationVersion = '2.6.0-alpha02'
     composeThemeVersion = "1.1.20" //May cause gradle conflicts
-    materialVersion = '1.6.1'
-    appCompatVersion = "1.4.1" //May cause gradle conflicts
     coreKtxVersion = "1.7.0"    //May cause gradle conflicts
+    coroutinesVersion = '1.6.4'
     hiltVersion = '2.42'
-    retrofitVersion = '2.9.0'
-    okhttpVersion ='4.2.1'
     junitVersion = "4.13.2"
+    materialVersion = '1.6.1'
     mockkVersion = '1.12.2'
+    okhttpVersion ='4.2.1'
+    roomVersion = "2.4.3"
+    retrofitVersion = '2.9.0'
 }
 
 buildscript {

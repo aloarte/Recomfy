@@ -9,8 +9,8 @@ data class ItemDataBo(
     val type: RecommendationType,
     val bannerImage:String = "",
     val genre :String ="",
-    val wTeaser: String,
-    val wUrl: String,
-    val yUrl: String,
-    val yId: String
+    val wTeaser: String="",
+    val wUrl: String="",
+    val yUrl: String="",
+    val yId: String=""
 )

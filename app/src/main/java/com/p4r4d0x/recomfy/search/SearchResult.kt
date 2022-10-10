@@ -1,7 +1,6 @@
 package com.p4r4d0x.recomfy.search
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,10 +20,12 @@ import androidx.compose.ui.unit.sp
 import com.p4r4d0x.domain.RecommendationType
 import com.p4r4d0x.domain.models.ItemDataBo
 import com.p4r4d0x.domain.models.RecommendationsBo
+import com.p4r4d0x.recomfy.R
 import com.p4r4d0x.recomfy.main.compose.RecomfySurface
 import com.p4r4d0x.recomfy.theme.RecomfyTheme
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
+
 
 @Preview(showBackground = true)
 @Composable
@@ -103,7 +103,9 @@ fun ItemCard(
 ) {
     RecomfySurface {
         Card(
-            modifier = Modifier.height(50.dp).fillMaxWidth(),
+            modifier = Modifier
+                .height(100.dp)
+                .fillMaxWidth(),
             contentColor = RecomfyTheme.colors.textSecondary,
             backgroundColor = RecomfyTheme.colors.uiBackground,
             shape = RoundedCornerShape(15.dp),
@@ -114,7 +116,6 @@ fun ItemCard(
             Column(
                 Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 15.dp, vertical = 15.dp)
             ) {
                 Box(
                     Modifier
@@ -122,13 +123,19 @@ fun ItemCard(
                 ) {
 
                     GlideImage(
-                        modifier = Modifier.align(Alignment.CenterStart).width(28.dp).height(50.dp),
+                        previewPlaceholder = R.mipmap.placeholder,
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                            .width(56.dp)
+                            .height(100.dp),
                         imageModel = itemDataBo.bannerImage,
                         imageOptions = ImageOptions(
                             contentScale = ContentScale.Crop,
                             alignment = Alignment.Center
                         )
                     )
+
+
                     Text(
                         modifier = Modifier.align(Alignment.Center),
                         textAlign = TextAlign.Left,
@@ -137,7 +144,7 @@ fun ItemCard(
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.subtitle1,
 
-                    )
+                        )
 
                     Text(
                         modifier = Modifier.align(Alignment.CenterEnd),
@@ -147,7 +154,7 @@ fun ItemCard(
                         style = MaterialTheme.typography.body1,
                         color = MaterialTheme.colors.primaryVariant,
 
-                    )
+                        )
                 }
             }
         }
