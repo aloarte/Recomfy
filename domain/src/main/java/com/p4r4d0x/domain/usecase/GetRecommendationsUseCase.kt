@@ -42,7 +42,7 @@ class GetRecommendationsUseCase @Inject constructor(
         return when (item.type) {
             RecommendationType.movie -> {
                 movieMetadataRepository.getMovieMetadata(item.name)?.let { movie ->
-                    item.copy(bannerImage = movie.poster, genre = movie.genre)
+                    item.copy(bannerImage = movie.poster, genre = movie.genre, description = movie.plot)
                 } ?: run {
                     item
                 }
